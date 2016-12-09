@@ -1,0 +1,23 @@
+---
+version: '2'
+services:
+  oauth2_proxy:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "4180:4180"
+    command: -http-address="${HTTP_ADDRESS}"
+             -provider="${PROVIDER}"
+             -github-org="${GITHUB_ORG}"
+             -github-team="${GITHUB_TEAM}"
+             -cookie-secure="${COOKIE_SECURE}"
+             -cookie-httponly="${COOKIE_HTTPONLY}"
+             -cookie-refresh="${COOKIE_REFRESH_DURATION}"
+             -upstream="${UPSTREAM}"
+             -pass-host-header="${PASS_HOST_HEADER}"
+             -email-domain="${EMAIL_DOMAIN}"
+             -version="${SHOW_VERSION}"
+             -login-url="${LOGIN_URL}"
+             -validate-url="${VALIDATE_URL}"
+             -redeem-url="${REDEEM_URL}"
